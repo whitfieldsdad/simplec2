@@ -4,7 +4,6 @@ import (
 	"runtime"
 )
 
-// GetDefaultShell returns the user's default shell based on the operating system type.
 func GetDefaultShell() (string, error) {
 	var shell string
 	switch runtime.GOOS {

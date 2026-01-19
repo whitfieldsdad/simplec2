@@ -9,26 +9,19 @@ import (
 type AgentStatusType string
 
 const (
-	AgentStatusTypeStarting  AgentStatusType = "starting"
-	AgentStatusTypeRunning   AgentStatusType = "running"
-	AgentStatusTypeHeartbeat AgentStatusType = "heartbeat"
-	AgentStatusTypeStopping  AgentStatusType = "stopping"
+	AgentStatusTypeRunning AgentStatusType = "running"
 )
 
 type AgentStatus struct {
-	Id      string          `json:"id"`
-	HostId  string          `json:"host_id"`
-	AgentId string          `json:"agent_id"`
-	Time    time.Time       `json:"time"`
-	Status  AgentStatusType `json:"status"`
+	Id     string          `json:"id"`
+	Time   time.Time       `json:"time"`
+	Status AgentStatusType `json:"status"`
 }
 
-func NewAgentStatus(hostId, agentId string, status AgentStatusType) AgentStatus {
+func NewAgentStatus(status AgentStatusType) AgentStatus {
 	return AgentStatus{
-		Id:      uuid.New().String(),
-		Time:    time.Now(),
-		HostId:  hostId,
-		AgentId: agentId,
-		Status:  status,
+		Id:     uuid.New().String(),
+		Time:   time.Now(),
+		Status: status,
 	}
 }

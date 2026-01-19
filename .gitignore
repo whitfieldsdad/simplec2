@@ -1,1 +1,10 @@
-.DS_Store   
+# macOS
+.DS_Store
+
+# Data from agents
+data/
+.data/
+
+# Notes
+notes/
+TODO.md

@@ -9,15 +9,11 @@ import (
 type Process struct {
 	PID         int        `json:"pid"`
 	PPID        int        `json:"ppid"`
-	Name        string     `json:"name,omitempty"`
-	User        string     `json:"user,omitempty"`
 	Executable  string     `json:"executable,omitempty"`
-	CommandLine []string   `json:"command_line,omitempty"`
+	CommandLine string     `json:"command_line,omitempty"`
 	StartTime   *time.Time `json:"start_time,omitempty"`
 	ExitTime    *time.Time `json:"exit_time,omitempty"`
 	ExitCode    *int       `json:"exit_code,omitempty"`
-	StdoutFile  string     `json:"stdout_file,omitempty"`
-	StderrFile  string     `json:"stderr_file,omitempty"`
 }
 
 func (o Process) GetArtifactType() ArtifactType {
@@ -64,9 +60,7 @@ func parseProcess(p *process.Process) (*Process, error) {
 		PPID: int(ppid),
 	}
 	process.StartTime = startTimePtr
-	process.Name, _ = p.Name()
-	process.CommandLine, _ = p.CmdlineSlice()
-	process.User, _ = p.Username()
+	process.CommandLine, _ = p.Cmdline()
 	process.Executable, _ = p.Exe()
 	return process, nil
 }

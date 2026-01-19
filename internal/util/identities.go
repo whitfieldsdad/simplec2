@@ -5,8 +5,9 @@ import "context"
 type IdentityType string
 
 const (
-	IdentityTypeSMBIOSUUID IdentityType = "smbios-uuid"
-	IdentityTypeDBUSUUID   IdentityType = "dbus-uuid"
+	IdentityTypeSimpleC2AgentUUID IdentityType = "simplec2-agent-uuid"
+	IdentityTypeSMBIOSUUID        IdentityType = "smbios-uuid"
+	IdentityTypeDBUSUUID          IdentityType = "dbus-uuid"
 )
 
 var (
